@@ -7,15 +7,30 @@
     box-sizing: border-box; /* to have boxes instead of rectangle because of padding .E.g: left event of right sidebar*/
 }
 
+/* Selects the root element of the document:
+   <html> in the case of HTML */
+
+:root{
+    --body-color : #efefef;  /* declaration of variable */
+    --nav-color : #1876f2;
+    --bg-color : #fff;
+}
+
+.dark-theme{
+    --body-color : #0a0a0a;  /* declaration of variable */
+    --nav-color : #000;
+    --bg-color : #000;
+}
 body{
-    background : #efefef;
+    background : var(--body-color);
+    transition: background 0.3s;
 }
 
 nav{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background : #1876f2;
+    background : var(--nav-color);
     padding : 5px 5%;
     position : sticky;
     top :0px;
@@ -74,7 +89,7 @@ nav{
 .search-box{
     display : flex;
     align-items: center;
-    background : #efefef;
+    background : var(--body-color);
     width : 350px;
     padding : 0 15px;
     border-radius: 20px;
@@ -109,7 +124,7 @@ nav{
     position : sticky;
     align-self: flex-start;
     top:70px;
-    background: #fff;
+    background: var(--bg-color);
     border-radius: 4px;
     color : #626262;
     padding : 20px;
@@ -134,7 +149,8 @@ nav{
 }
 
 .imp-links a:last-child{ /* select the last anchor tag */
-    color : #1876f2
+    color : #1876f2;
+
 
 }
 .imp-links{
@@ -167,6 +183,7 @@ nav{
 .sidebar-title a{
     text-decoration: none;
     color: #1876f2;
+
     font-size: 12px;
 }
 
@@ -197,7 +214,8 @@ nav{
 .right-event a{
     font-size: 12px;
     text-decoration: none;
-    color :  #1876f2
+    color : #1876f2;
+
 }
 
 .left-event span{
@@ -205,8 +223,9 @@ nav{
     bottom: 0;
     left : 0;
     width : 100%;  /* since it s a span bottom + left will be in the corner so augment the width */
-    background-color: #1876f2;
-    color:white;
+    background:var(--nav-color);
+
+    color: #fff;
     font-size: 10px;
     padding : 4px 0;
 }
@@ -271,7 +290,7 @@ nav{
     width :100%;        /* combo bottom + width + align center to have a good rendu*/
     text-align: center;
     font-size: 14px;
-    color :white;
+    color : #fff;
 }
 
 .story1{
@@ -308,7 +327,7 @@ nav{
 
 .write-post-container{
     width :100%;
-    background: #fff;
+    background: var(--bg-color);
     padding : 20px;
     border-radius:6px;
     color : #626262;
@@ -370,7 +389,7 @@ nav{
 
 .post-container{
     width :100%;
-    background: #fff;
+    background: var(--bg-color);
     padding : 20px;
     border-radius:6px;
     color : #626262;
@@ -391,11 +410,11 @@ nav{
 
 .arrobase{
     font-weight: 500;
-    color: black
+    color: #626262;
 }
 
 .post-text a{
-    color:#1876f2;
+    color: #1876f2;
     text-decoration: none;
 }
 
@@ -452,7 +471,7 @@ nav{
 }
 
 .settings-menu{
-    background-color: white;
+    background:  var(--bg-color);
     position : absolute;
     width : 90%;
     max-width: 350px;
@@ -465,13 +484,13 @@ nav{
     transition : max-height 0.3s;
 }
 
-.settings-menu-height{
+.settings-menu-height{ /* to toggle when clicking the logo profile (.settings-menu.settings-menu-height is also correct) */
     max-height: 500px;
 }
 
 .user-profile a{
     text-decoration: none;
-    color:#1876f2;
+    color : #1876f2;
     font-size: 12px;
     /* margin : 25px 0; doesnt work because anchor tag is inline */
     
@@ -506,4 +525,30 @@ nav{
     justify-content: space-between;
     align-items: center;
     flex:1; /* since <a> is an inline tag*/
+}
+
+#dark-btn{
+    background: #ccc;
+    width :45px;
+    padding : 2px 3px;
+    border-radius: 15px;
+    position : absolute;
+    top : 20px;
+    right: 20px;
+    cursor : pointer;
+    display: flex;
+    transition : padding-left  0.3s , background 0.3s ;
+}
+
+#dark-btn span{
+    height :18px;
+    width :18px;
+    background: var(--bg-color);
+    border-radius: 50%;
+    display: inline-block; /* different that inline because the latter dont allow height and width fixation */
+}
+
+#dark-btn.dark-btn-activated{ /* I need it to be a double class to toggle the right function when id */
+    padding-left: 25px;
+    background: #3d3d3d;
 }
